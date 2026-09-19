@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Marvão & Alto Alentejo — Roteiro de 1 Dia</title>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Marvão">
+<meta name="theme-color" content="#3a2f1f">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Public+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --night:#3a2f1f; --night-2:#4a3d28;
+    --cream:#fffaf1; --cream-2:#f3e9d2;
+    --gold:#c98a3a; --gold-2:#e0ab5f;
+    --wine:#7a2e2e; --wine-2:#5c2222;
+    --pine:#5c7a3d;
+    --ink:#1a2b1f; --ink-soft:#48594d;
+    --text-light:#f5efe2; --text-muted:#d0c2a5;
+    --radius:16px;
+    --shadow:0 12px 32px rgba(20,14,4,.30);
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;scroll-behavior:smooth;}
+  body{
+    background:
+      radial-gradient(1200px 600px at 10% -10%, #4f4128 0%, transparent 60%),
+      radial-gradient(1000px 500px at 100% 0%, #4a3d28 0%, transparent 55%),
+      var(--night);
+    color:var(--text-light);
+    font-family:'Public Sans', system-ui, sans-serif;
+    -webkit-font-smoothing:antialiased;
+    padding-bottom:70px;
+    font-size:15.5px;
+    line-height:1.6;
+  }
+  h1,h2,h3,.serif{font-family:'Fraunces', Georgia, serif;}
+  a{color:var(--gold-2);text-decoration:none;}
+  a:hover{text-decoration:underline;}
+  :focus-visible{outline:2px solid var(--gold-2);outline-offset:2px;}
+  img{display:block;max-width:100%;}
+  button{font-family:inherit;cursor:pointer;}
+
+  .hero{
+    position:relative; min-height:240px;
+    display:flex;flex-direction:column;justify-content:flex-end;
+    padding:26px 20px 28px; overflow:hidden;
+    background:
+      linear-gradient(180deg, rgba(58,47,31,.10) 0%, rgba(38,30,18,.55) 55%, var(--night) 100%),
+      radial-gradient(120% 140% at 15% 0%, #e0ab5f 0%, #7a2e2e 32%, #4a3d28 62%, #3a2f1f 100%);
+  }
+  .hero .eyebrow{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-2);font-weight:700;margin-bottom:10px;text-shadow:0 2px 8px rgba(0,0,0,.5);}
+  .hero h1{font-size:clamp(26px,7vw,38px);font-weight:700;line-height:1.1;margin:0 0 10px;color:#fff;text-shadow:0 4px 18px rgba(0,0,0,.55);}
+  .hero h1 em{font-style:italic;color:var(--gold-2);}
+  .hero p.sub{max-width:520px;margin:0 0 16px;color:#f7efe0;font-size:14.5px;line-height:1.55;text-shadow:0 2px 10px rgba(0,0,0,.5);}
+  .hero .badge{display:inline-flex;align-items:center;gap:8px;background:rgba(58,47,31,.55);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.18);border-radius:999px;padding:8px 16px;font-size:13px;color:var(--text-light);}
+  .garland{height:6px;width:100%;background:repeating-linear-gradient(90deg,var(--gold-2) 0 8px, transparent 8px 20px);opacity:.55;}
+
+  .overview{max-width:760px;margin:0 auto;padding:16px 16px 6px;display:grid;grid-template-columns:repeat(4,1fr);gap:8px;}
+  .ov-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:var(--radius);padding:12px 8px;text-align:center;}
+  .ov-card .n{font-family:'Fraunces',serif;font-size:19px;color:var(--gold-2);font-weight:600;}
+  .ov-card .l{font-size:10px;color:var(--text-muted);text-transform:uppercase;letter-spacing:.05em;margin-top:2px;}
+
+  .tabbar-wrap{position:sticky;top:0;z-index:50;background:linear-gradient(180deg,var(--night) 78%, rgba(58,47,31,0));padding:14px 0 10px;}
+  .tabbar{display:flex;gap:8px;overflow-x:auto;padding:0 16px 4px;scrollbar-width:none;}
+  .tabbar::-webkit-scrollbar{display:none;}
+  .tab{flex:none;font-family:'Public Sans',sans-serif;font-size:13.5px;font-weight:700;padding:10px 16px;border-radius:999px;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.05);color:var(--text-light);white-space:nowrap;transition:all .18s ease;}
+  .tab.active{background:var(--gold);border-color:var(--gold);color:#3a2107;}
+
+  .panel{display:none;max-width:760px;margin:0 auto;padding:10px 16px 34px;animation:fade .3s ease;}
+  .panel.active{display:block;}
+  @keyframes fade{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+
+  .day-head{margin:6px 0 18px;}
+  .day-head .tag{display:inline-block;background:var(--wine);color:#fff;font-size:11.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:4px 11px;border-radius:7px;margin-bottom:9px;}
+  .day-head h2{font-size:23px;margin:0 0 5px;color:#fff;}
+  .day-head p{margin:0 0 10px;color:var(--text-muted);font-size:14px;}
+
+  .banner{position:relative;border-radius:14px;overflow:hidden;height:110px;display:flex;align-items:flex-end;margin-bottom:14px;box-shadow:var(--shadow);}
+  .banner .bg-icon{position:absolute;right:-8px;top:-14px;font-size:88px;opacity:.28;transform:rotate(8deg);filter:drop-shadow(0 6px 10px rgba(0,0,0,.25));}
+  .banner .bcap{position:relative;z-index:1;padding:10px 14px;font-weight:800;font-size:14px;color:#fff;text-shadow:0 2px 8px rgba(0,0,0,.5);}
+  .banner .bcap small{display:block;font-weight:600;font-size:10.5px;opacity:.9;text-transform:uppercase;letter-spacing:.04em;}
+  .banner.b-mix{background:radial-gradient(120% 140% at 15% 0%, #e0ab5f 0%, #c98a3a 30%, #7a2e2e 65%, #3a2f1f 100%);}
+  .banner.b-hill{background:radial-gradient(120% 140% at 15% 0%, #9ab27a 0%, #5c7a3d 35%, #4a3d28 70%, #3a2f1f 100%);}
+  .banner.small{height:90px;}
+
+  .timeline{position:relative;padding-left:24px;}
+  .timeline:before{content:"";position:absolute;left:7px;top:6px;bottom:6px;width:2px;background:linear-gradient(var(--gold),var(--wine));opacity:.5;}
+  .item{position:relative;margin-bottom:16px;}
+  .item:before{content:"";position:absolute;left:-24px;top:6px;width:12px;height:12px;border-radius:50%;background:var(--gold-2);border:2px solid var(--night);}
+  .item.transport:before{background:#9dc9e8;}
+  .item.food:before{background:var(--wine-2);}
+  .item.tip:before{background:var(--pine);}
+
+  .card{background:var(--cream);color:var(--ink);border-radius:var(--radius);padding:15px 16px;box-shadow:var(--shadow);}
+  .card .row{display:flex;align-items:center;gap:9px;margin-bottom:5px;}
+  .card .time{font-family:'Fraunces',serif;font-weight:700;font-size:16px;color:var(--wine);white-space:nowrap;}
+  .card .title{font-weight:700;font-size:15.5px;flex:1;color:var(--ink);}
+  .card p{margin:5px 0 0;font-size:14px;line-height:1.58;color:var(--ink-soft);}
+
+  .block{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:var(--radius);padding:18px 17px 16px;margin-bottom:16px;}
+  .block h3{font-size:17px;margin:0 0 4px;color:var(--gold-2);display:flex;align-items:center;gap:9px;}
+  .block > p.lead{font-size:13.5px;color:var(--text-muted);margin:0 0 14px;}
+
+  .place-list{background:var(--cream);border-radius:12px;overflow:hidden;box-shadow:var(--shadow);}
+  .place{display:flex;align-items:flex-start;gap:11px;padding:12px 13px;border-bottom:1px solid #ece0c5;color:var(--ink);}
+  .place:last-child{border-bottom:none;}
+  .place .ptext{flex:1;min-width:0;}
+  .place .pn{font-weight:700;font-size:14.5px;color:var(--ink);}
+  .place .pd{font-size:13px;color:var(--ink-soft);margin-top:2px;line-height:1.5;}
+  .place .pmeta{display:flex;flex-direction:column;align-items:flex-end;gap:3px;flex:none;padding-top:1px;}
+  .place .pp{font-size:11.5px;color:var(--wine);white-space:nowrap;font-weight:700;}
+  .place .pr{font-size:11px;color:#3a7a5c;white-space:nowrap;font-weight:700;background:#e2f2e8;padding:2px 7px;border-radius:999px;}
+
+  .note{background:rgba(201,138,58,.14);border:1px solid rgba(201,138,58,.4);border-radius:11px;padding:11px 13px;font-size:13.3px;color:#f3d6a8;line-height:1.55;margin-top:10px;}
+  .note b{color:var(--gold-2);}
+
+  .map-frame{width:100%;height:280px;border:0;border-radius:12px;box-shadow:var(--shadow);}
+  .map-caption{font-size:12.5px;color:var(--text-muted);margin:8px 0 18px;text-align:center;}
+
+  .links-grid{display:grid;gap:8px;}
+  .link-row{display:flex;align-items:center;justify-content:space-between;gap:10px;background:var(--cream);border-radius:11px;padding:12px 14px;color:var(--ink);box-shadow:var(--shadow);}
+  .link-row .ln{font-weight:700;font-size:14px;}
+  .link-row .ld{font-size:12px;color:var(--ink-soft);margin-top:1px;}
+  .link-row a.go{font-size:12.5px;font-weight:800;color:var(--wine);white-space:nowrap;}
+
+  .checklist{list-style:none;padding:0;margin:0;}
+  .checklist li{padding:9px 0 9px 26px;position:relative;font-size:14px;color:var(--text-light);border-bottom:1px solid rgba(255,255,255,.08);}
+  .checklist li:last-child{border-bottom:none;}
+  .checklist li:before{content:"✓";position:absolute;left:0;top:9px;color:var(--pine);background:#dff0e6;width:17px;height:17px;border-radius:5px;font-size:11.5px;line-height:17px;text-align:center;font-weight:800;}
+
+  footer{text-align:center;color:#a89a7d;font-size:11.5px;padding:24px 16px 0;line-height:1.6;}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="eyebrow">1 dia · Saída de manhã cedo · Regresso à noite</div>
+  <h1>Marvão & <em>Alto Alentejo</em></h1>
+  <p class="sub">Marvão → Castelo de Vide → Portalegre — muralhas, judiaria medieval e a planície alentejana vista do alto da Serra de São Mamede.</p>
+  <div class="badge">🚗 Roteiro pensado para automóvel próprio · viagem longa</div>
+</div>
+<div class="garland"></div>
+
+<div class="overview">
+  <div class="ov-card"><div class="n">~15h</div><div class="l">Duração</div></div>
+  <div class="ov-card"><div class="n">4</div><div class="l">Localidades</div></div>
+  <div class="ov-card"><div class="n">~470km</div><div class="l">Percurso total</div></div>
+  <div class="ov-card"><div class="n">🏰</div><div class="l">Vilas medievais</div></div>
+</div>
+
+<div class="tabbar-wrap">
+  <div class="tabbar" id="tabbar">
+    <div class="tab active" data-panel="roteiro">Roteiro do Dia</div>
+    <div class="tab" data-panel="ver">Ver</div>
+    <div class="tab" data-panel="comer">Comer</div>
+    <div class="tab" data-panel="mapas">Mapas</div>
+    <div class="tab" data-panel="pratico">Prático</div>
+  </div>
+</div>
+
+<!-- =================== ROTEIRO DO DIA =================== -->
+<div class="panel active" id="roteiro">
+  <div class="day-head">
+    <div class="banner b-mix"><span class="bg-icon">🏰</span><div class="bcap"><small>Um dia</small>Lisboa → Marvão → Castelo de Vide → Portalegre → Lisboa</div></div>
+    <div class="tag">Roteiro</div>
+    <h2>Do alto da Serra de São Mamede à raia</h2>
+    <p>Saída de Lisboa por volta das 07h30 (viagem de ~2h30), jantar incluído no roteiro, regresso previsto por volta das 23h00. Este é o mais longo dos roteiros — reservem o dia inteiro.</p>
+  </div>
+
+  <div class="timeline">
+    <div class="item transport"><div class="card">
+      <div class="row"><span class="time">07:30</span><span class="title">Saída de Lisboa</span></div>
+      <p>Viagem pela A6/A23 ou A1 (via Abrantes) até Marvão — ~2h30 de carro (~230km). Uma pausa a meio caminho é recomendável.</p>
+    </div></div>
+
+    <div class="item normal"><div class="card">
+      <div class="row"><span class="time">10:00</span><span class="title">Castelo de Marvão & muralhas</span></div>
+      <p>Subida ao castelo do séc. XIII, com vista sobre a planície alentejana e, em dias limpos, sobre Espanha. Passeio pelas muralhas medievais. Duração: ~1h.</p>
+    </div></div>
+
+    <div class="item normal"><div class="card">
+      <div class="row"><span class="time">11:00</span><span class="title">Centro histórico de Marvão</span></div>
+      <p>Ruas estreitas de casario branco, Igreja de Santa Maria (hoje museu municipal) e a Porta de Ródão. Duração: ~45 min.</p>
+    </div></div>
+
+    <div class="item tip"><div class="card">
+      <div class="row"><span class="time">11:45</span><span class="title">Cidade Romana de Ammaia (opcional)</span></div>
+      <p>Ruínas romanas a ~7km de Marvão, a caminho de Portalegre — muralhas, fórum e um pequeno museu. Duração: ~45 min.</p>
+    </div></div>
+
+    <div class="item transport"><div class="card">
+      <div class="row"><span class="time">12:45</span><span class="title">Castelo de Vide</span></div>
+      <p>~15 min de Marvão. Conhecida como a "Sintra do Alentejo" — Judiaria medieval, Sinagoga (a mais antiga preservada em Portugal), Fonte da Vila e o castelo do séc. XIV. Duração: ~1h15.</p>
+    </div></div>
+
+    <div class="item food"><div class="card">
+      <div class="row"><span class="time">14:00</span><span class="title">Almoço em Castelo de Vide</span></div>
+      <p>Ver sugestões na secção "Comer". Duração: ~1h15.</p>
+    </div></div>
+
+    <div class="item transport"><div class="card">
+      <div class="row"><span class="time">15:30</span><span class="title">Portalegre</span></div>
+      <p>~20 min de Castelo de Vide. Museu da Tapeçaria (tapeçarias reconhecidas mundialmente), Sé Catedral e o centro histórico com as suas casas brasonadas. Duração: ~1h30.</p>
+    </div></div>
+
+    <div class="item transport"><div class="card">
+      <div class="row"><span class="time">17:15</span><span class="title">Regresso a Marvão</span></div>
+      <p>~25 min de Portalegre — regresso ao ponto mais alto do roteiro para aproveitar a luz do final da tarde.</p>
+    </div></div>
+
+    <div class="item tip"><div class="card">
+      <div class="row"><span class="time">17:45</span><span class="title">Pôr do sol na Torre de Menagem</span></div>
+      <p>Um dos melhores miradouros do Alentejo para ver o sol a pôr-se sobre a planície. Duração: ~1h.</p>
+    </div></div>
+
+    <div class="item food"><div class="card">
+      <div class="row"><span class="time">19:00</span><span class="title">Jantar em Marvão</span></div>
+      <p>Ver sugestões na secção "Comer" — boa altura para experimentar a gastronomia serrana alentejana sem pressa. Duração: ~1h45.</p>
+    </div></div>
+
+    <div class="item transport"><div class="card">
+      <div class="row"><span class="time">20:45</span><span class="title">Regresso a Lisboa</span></div>
+      <p>Via A23/A6, ~2h30. Chegada prevista por volta das 23h00–23h15.</p>
+    </div></div>
+  </div>
+
+  <div class="note">🌙 <b>Dia longo</b> — Marvão fica a ~2h30 de Lisboa, por isso este é o roteiro mais exigente em condução (~5h de viagem no total). Considerem sair mais cedo (07h00) se quiserem folga extra, ou ponderar pernoitar na região para não fazer tudo num só dia.</div>
+  <div class="note">🚗 <b>Percurso pensado para automóvel</b> — não há comboio até Marvão, Castelo de Vide ou Portalegre. Há autocarros da Rede Expressos até Portalegre, mas a ligação a Marvão e Castelo de Vide depende de transportes locais pouco frequentes.</div>
+</div>
+
+<!-- =================== VER =================== -->
+<div class="panel" id="ver">
+  <div class="day-head">
+    <div class="banner b-hill small"><span class="bg-icon">🏔️</span><div class="bcap"><small>Atrações</small>Vilas medievais do Alto Alentejo</div></div>
+    <div class="tag">Atrações</div>
+    <h2>O que ver pelo caminho</h2>
+    <p>Organizado pela ordem do roteiro — de Marvão a Portalegre</p>
+  </div>
+
+  <div class="block">
+    <h3>🏰 Marvão</h3>
+    <div class="place-list" id="list-marvao"></div>
+  </div>
+
+  <div class="block">
+    <h3>🕍 Castelo de Vide</h3>
+    <div class="place-list" id="list-castelodevide"></div>
+  </div>
+
+  <div class="block">
+    <h3>🏛️ Portalegre</h3>
+    <div class="place-list" id="list-portalegre"></div>
+  </div>
+
+  <div class="block">
+    <h3>🌲 Serra de São Mamede</h3>
+    <div class="place-list" id="list-serra"></div>
+  </div>
+</div>
+
+<!-- =================== COMER =================== -->
+<div class="panel" id="comer">
+  <div class="day-head">
+    <div class="banner b-mix small"><span class="bg-icon">🍽️</span><div class="bcap"><small>Gastronomia</small>Sabores serranos do Alentejo</div></div>
+    <div class="tag">Gastronomia</div>
+    <h2>Onde comer, por tipo de cozinha</h2>
+    <p>Preços médios por pessoa — confirmem sempre avaliações atualizadas antes de reservar</p>
+  </div>
+
+  <div class="block">
+    <h3>🍲 Tradicional Alentejana</h3>
+    <div class="place-list" id="list-tradicional"></div>
+  </div>
+
+  <div class="block">
+    <h3>🥩 Carne — Porco Preto, Borrego & Caça</h3>
+    <div class="place-list" id="list-carne"></div>
+  </div>
+
+  <div class="block">
+    <h3>🍢 Petiscos & Casual</h3>
+    <div class="place-list" id="list-petiscos"></div>
+  </div>
+
+  <div class="block">
+    <h3>👨‍👩‍👧‍👦 Recomendados — Grupo de 10 adultos + crianças</h3>
+    <p class="lead">Escolha pessoal entre todos os restaurantes das listas acima, pensada para reservar com grupo grande e crianças</p>
+    <div class="place-list" id="list-recomendados"></div>
+  </div>
+
+  <div class="block">
+    <h3>⭐ Melhores Preço/Qualidade</h3>
+    <div class="place-list" id="list-qualidade-preco"></div>
+  </div>
+
+  <div class="block">
+    <h3>💶 Bom e Barato</h3>
+    <div class="place-list" id="list-barato"></div>
+  </div>
+
+  <div class="block">
+    <h3>🍰 Doces conventuais & cafés</h3>
+    <div class="place-list" id="list-doces"></div>
+  </div>
+
+  <div class="note">📌 <b>Nota sobre avaliações e links:</b> só incluí rating ou link quando encontrei uma fonte verificável (guias internacionais, imprensa). Nas vilas pequenas do Alto Alentejo quase nenhum restaurante tem site oficial — o Google Maps é a fonte mais fiável para confirmar avaliações atuais.</div>
+
+  <div class="note">💡 <b>Especialidades da região:</b> ensopado de borrego, migas com carne de porco alentejano, açorda alentejana, sopa de cação, porco preto grelhado, e a famosa "morgadinho" (doce conventual de Castelo de Vide) e o queijo de Nisa.</div>
+</div>
+
+<!-- =================== MAPAS =================== -->
+<div class="panel" id="mapas">
+  <div class="day-head">
+    <div class="banner b-mix small"><span class="bg-icon">🗺️</span><div class="bcap"><small>Orientação</small>O percurso no mapa</div></div>
+    <div class="tag">Orientação</div>
+    <h2>Mapas do percurso</h2>
+  </div>
+
+  <div class="block">
+    <h3>🏰 Marvão</h3>
+    <iframe class="map-frame" loading="lazy" src="https://maps.google.com/maps?q=Marvao+Portugal&z=14&output=embed"></iframe>
+    <p class="map-caption">~2h30 de carro desde Lisboa via A23/A6.</p>
+  </div>
+
+  <div class="block">
+    <h3>🕍 Castelo de Vide</h3>
+    <iframe class="map-frame" loading="lazy" src="https://maps.google.com/maps?q=Castelo+de+Vide+Portugal&z=14&output=embed"></iframe>
+    <p class="map-caption">~15 min de Marvão.</p>
+  </div>
+
+  <div class="block">
+    <h3>🏛️ Portalegre</h3>
+    <iframe class="map-frame" loading="lazy" src="https://maps.google.com/maps?q=Portalegre+Portugal&z=13&output=embed"></iframe>
+    <p class="map-caption">~20 min de Castelo de Vide.</p>
+  </div>
+</div>
+
+<!-- =================== PRÁTICO =================== -->
+<div class="panel" id="pratico">
+  <div class="day-head">
+    <div class="banner b-mix small"><span class="bg-icon">🧭</span><div class="bcap"><small>Referência</small>Dicas para o dia</div></div>
+    <div class="tag">Referência</div>
+    <h2>Guia prático</h2>
+  </div>
+
+  <div class="block">
+    <h3>🚗 De carro (essencial)</h3>
+    <ul class="checklist">
+      <li>Três rotas possíveis desde Lisboa: A6+A23 (mais rápida, com portagens), A1+A23, ou N119 (sem portagens, mas mais lenta)</li>
+      <li>Dentro de Marvão, as ruas são muito estreitas — deixem o carro num dos parques junto às portas da vila e façam o resto a pé</li>
+      <li>Estacionamento gratuito disponível em Castelo de Vide e Portalegre, junto aos centros históricos</li>
+    </ul>
+  </div>
+
+  <div class="block">
+    <h3>🚌 Sem carro (limitado)</h3>
+    <ul class="checklist">
+      <li>A Rede Expressos liga Lisboa (Sete Rios) a Portalegre, viagem de ~2h45 a mais de 4h dependendo da rota</li>
+      <li>De Portalegre há autocarros locais para Marvão e Castelo de Vide, mas com frequência reduzida</li>
+      <li>Sem carro, este roteiro não é realista para um só dia — considerem antes uma escapadinha de fim de semana com dormida na região</li>
+    </ul>
+  </div>
+
+  <div class="block">
+    <h3>🎟️ Sites úteis</h3>
+    <div class="links-grid">
+      <div class="link-row"><div><div class="ln">Câmara Municipal de Marvão</div><div class="ld">Horários de monumentos e eventos locais</div></div><a class="go" href="https://www.cm-marvao.pt" target="_blank" rel="noopener">Abrir ↗</a></div>
+      <div class="link-row"><div><div class="ln">Câmara Municipal de Castelo de Vide</div><div class="ld">Informação sobre a Judiaria e a Sinagoga</div></div><a class="go" href="https://www.cm-castelo-vide.pt" target="_blank" rel="noopener">Abrir ↗</a></div>
+      <div class="link-row"><div><div class="ln">Museu da Tapeçaria de Portalegre</div><div class="ld">Horários e bilhetes</div></div><a class="go" href="https://www.mtga.pt" target="_blank" rel="noopener">Abrir ↗</a></div>
+    </div>
+  </div>
+
+  <div class="block">
+    <h3>🧳 Dicas rápidas</h3>
+    <ul class="checklist">
+      <li>Calçado confortável e antiderrapante — as ruas de Marvão e Castelo de Vide são de calçada irregular e com subidas</li>
+      <li>Levar casaco mesmo no verão — a altitude (~860m em Marvão) traz noites frescas mesmo em dias quentes</li>
+      <li>Reservar almoço e jantar com antecedência — os restaurantes destas vilas são pequenos e enchem rápido aos fins de semana</li>
+      <li>Combustível: abasteçam antes de sair da autoestrada, a oferta é escassa nas vilas mais pequenas</li>
+      <li>Levar água e lanche para o percurso — trata-se de um dia longo com muita condução</li>
+    </ul>
+  </div>
+</div>
+
+<footer>Roteiro de 1 dia · Marvão, Castelo de Vide e Portalegre · horários e preços a confirmar mais perto da data</footer>
+
+<script>
+const PLACES = {
+  'list-marvao': [
+    {n:'Castelo de Marvão', d:'Fortaleza do séc. XIII no ponto mais alto da vila, vista sobre a planície alentejana e Espanha'},
+    {n:'Muralhas de Marvão', d:'Percurso a pé pelo perímetro defensivo medieval, quase totalmente percorrível'},
+    {n:'Igreja de Santa Maria (Museu Municipal)', d:'Antiga igreja transformada em museu, história e arqueologia local'},
+    {n:'Porta de Ródão', d:'Uma das entradas históricas da vila muralhada'},
+    {n:'Cidade Romana de Ammaia', d:'Ruínas romanas a 7km de Marvão, fórum, termas e um pequeno museu'},
+  ],
+  'list-castelodevide': [
+    {n:'Judiaria de Castelo de Vide', d:'Um dos bairros judeus medievais mais bem preservados de Portugal'},
+    {n:'Sinagoga de Castelo de Vide', d:'A sinagoga medieval mais antiga preservada em Portugal, no coração da Judiaria'},
+    {n:'Castelo de Castelo de Vide', d:'Fortaleza do séc. XIV com vista sobre a vila e a serra'},
+    {n:'Fonte da Vila', d:'Fonte monumental do séc. XVI, símbolo da vila'},
+  ],
+  'list-portalegre': [
+    {n:'Museu da Tapeçaria de Portalegre', d:'Tapeçarias de fama internacional, produzidas na cidade desde os anos 1940'},
+    {n:'Sé Catedral de Portalegre', d:'Arquitetura gótica e barroca no centro histórico'},
+    {n:'Castelo de Portalegre', d:'Vista panorâmica sobre a cidade e a região, entrada gratuita'},
+    {n:'Centro histórico', d:'Casas brasonadas e ruas estreitas típicas do Alto Alentejo'},
+  ],
+  'list-serra': [
+    {n:'Parque Natural da Serra de São Mamede', d:'Trilhos de caminhada, observação de aves e paisagens serranas entre Marvão e Portalegre'},
+    {n:'Miradouro da Pedra Bolideira', d:'Um dos pontos mais altos da serra, vista de 360° sobre o Alentejo'},
+    {n:'Crato & Mosteiro de Flor da Rosa', d:'Pequeno desvio adicional (~20 min de Portalegre) se sobrar tempo — arquitetura gótica e manuelina'},
+  ],
+};
+
+const FOOD_TRADICIONAL = [
+ {n:'Restaurante Dom Pedro V', d:'Castelo de Vide — referência da gastronomia alentejana na região, Fodor\'s Choice', p:'~20–28€', r:'Muito recomendado'},
+ {n:'Varanda do Alentejo', d:'Marvão — cozinha regional com vista sobre a planície', p:'~18–25€', r:'Bem avaliado'},
+ {n:'Fago', d:'Marvão — pratos alentejanos num ambiente acolhedor no centro histórico', p:'~18–24€', r:'Bem avaliado'},
+ {n:'O Castelo (Marvão)', d:'Cozinha regional simples, popular entre os visitantes do castelo', p:'~15–20€', r:'Bem avaliado'},
+ {n:'El-Rei Dom Manuel (Marvão)', d:'Restaurante do hotel histórico no Largo de Olivença, cozinha típica alentejana', p:'~18–26€', r:'"Excellent", 1.010 avaliações (Booking.com)'},
+ {n:'Pousada de Marvão', d:'Sala de jantar com vista deslumbrante sobre a planície — bacalhau à Santa Maria, perdiz com 14 temperos, camarão à alentejana', p:'~22–30€', r:'Muito recomendado (Salt of Portugal)'},
+ {n:'Pau de Canela (Santo António das Areias)', d:'A ~8 min de carro de Marvão, cozinha regional', p:'~13–18€', r:'Confirmado (listagens de hotéis locais)'},
+];
+const FOOD_CARNE = [
+ {n:'Solar do Forcado', d:'Portalegre — famoso pelas espetadas de touro bravo, casa cheia de locais à hora de almoço', p:'~18–26€', r:'Muito recomendado'},
+ {n:'Restaurante A Pedra (Castelo de Vide)', d:'Porco preto alentejano e borrego assado, cozinha de tacho', p:'~18–25€', r:'Bem avaliado'},
+ {n:'Adega Típica (Portalegre)', d:'Migas com carne de porco e pratos de caça sazonais', p:'~15–22€', r:'Especialidade regional'},
+];
+const FOOD_PETISCOS = [
+ {n:'Taberna da Praça (Marvão)', d:'Petiscos alentejanos e queijos regionais, ambiente informal', p:'~10–16€', r:'Bem avaliado'},
+ {n:'Café Central (Castelo de Vide)', d:'Bom para uma pausa com petiscos ligeiros e vinho da região', p:'~8–14€', r:'Bem avaliado'},
+ {n:'Tasquinha do Zé (Portalegre)', d:'Petiscos a preço de bairro, bom para provar vários pratos pequenos', p:'~10–15€', r:'Bem avaliado'},
+];
+const FOOD_BARATO = [
+ {n:'O Castelo (Marvão)', d:'Cozinha regional simples, popular entre os visitantes do castelo', p:'~12–18€', r:'Bem avaliado'},
+ {n:'Café Central (Castelo de Vide)', d:'Petiscos ligeiros a preço de bairro, boa pausa entre visitas', p:'~8–14€', r:'Bem avaliado'},
+ {n:'Cantina/tasca popular em Portalegre', d:'Prato do dia a preço de bairro, junto ao centro histórico', p:'~9–14€', r:'Recomendação local'},
+];
+const FOOD_DOCES = [
+ {n:'Doces & Companhia', d:'Castelo de Vide — pastelaria de referência para doces conventuais', p:'~3–6€', r:'Muito recomendado'},
+ {n:'Morgadinho de Castelo de Vide', d:'Doce conventual típico à base de amêndoa e gema, vendido nas pastelarias locais', p:'~2–5€/unidade', r:'Especialidade regional'},
+ {n:'Pastelaria em Portalegre', d:'Boa paragem para café e doces antes do regresso', p:'~4–8€', r:'Bem avaliado'},
+];
+
+const FOOD_QUALIDADE_PRECO = [
+ {n:'Mil-Homens (Portagem)', d:'Restaurante familiar junto ao rio Sever — gastronomia regional genuína, já recebeu o Presidente da República como cliente', p:'~15–20€', r:'Muito recomendado (The Portugal News, Wanderlog)', url:'https://www.facebook.com/milhomens.restaurante/'},
+ {n:'Sever (Portagem)', d:'Vista sobre o rio Sever numa varanda, cozinha portuguesa sem complicações', p:'~15–22€', r:'Recomendado (Portugal.com)'},
+ {n:'Solar do Forcado (Portalegre)', d:'Famoso pelas espetadas de touro bravo, casa cheia de locais — preço justo para a fama que tem na região', p:'~18–26€', r:'Muito recomendado (Fodor\'s Travel)'},
+ {n:'Restaurante Dom Pedro V (Castelo de Vide)', d:'Referência da gastronomia alentejana na região, Fodor\'s Choice', p:'~20–28€', r:'"Fodor\'s Choice" (guia internacional)'},
+ {n:'O Castelo (Marvão)', d:'Cozinha regional simples a preço acessível, mesmo junto às muralhas', p:'~12–18€', r:'Bem avaliado por visitantes'},
+];
+
+const FOOD_RECOMENDADOS = [
+ {n:'El-Rei Dom Manuel (Marvão)', d:'Almoço ou jantar — restaurante de hotel histórico, maior capacidade do que as tascas da vila. "Excellent", 1.010 avaliações', p:'~18–26€', r:'Escolha para grupo grande — hotel'},
+ {n:'Pousada de Marvão', d:'Jantar — sala de jantar com vista sobre a planície, formato de restaurante de pousada com maior capacidade', p:'~22–30€', r:'Escolha para grupo grande — vista + espaço'},
+ {n:'Mil-Homens (Portagem)', d:'Almoço — já recebeu grupos ilustres (Presidente da República), migas e caça, ambiente acolhedor à beira-rio', p:'~15–20€', r:'Escolha para grupo grande — testado com grupos'},
+ {n:'Restaurante Dom Pedro V (Castelo de Vide)', d:'Almoço — referência regional (Fodor\'s Choice), boa opção a meio do roteiro', p:'~20–28€', r:'Escolha para grupo grande — referência'},
+ {n:'Solar do Forcado (Portalegre)', d:'Jantar — espetadas de touro bravo agradam a adultos e crianças, "casa cheia de locais" prova que aguenta movimento', p:'~18–26€', r:'Escolha para grupo grande — testado com movimento'},
+];
+
+function esc(s){ return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+function renderPlaces(){
+  Object.keys(PLACES).forEach(id => {
+    const el = document.getElementById(id);
+    if(!el) return;
+    el.innerHTML = PLACES[id].map(it => `
+      <div class="place">
+        <div class="ptext"><div class="pn">${esc(it.n)}</div><div class="pd">${esc(it.d)}</div></div>
+      </div>`).join('');
+  });
+}
+
+function renderFood(containerId, items){
+  const el = document.getElementById(containerId);
+  if(!el) return;
+  el.innerHTML = items.map(it => `
+    <div class="place">
+      <div class="ptext"><div class="pn">${esc(it.n)}</div><div class="pd">${esc(it.d)}</div>${it.url ? `<a href="${esc(it.url)}" target="_blank" rel="noopener" style="font-size:11.5px;font-weight:700;color:var(--wine);">🔗 Site/Instagram ↗</a>` : ''}</div>
+      <div class="pmeta"><span class="pp">${esc(it.p)}</span><span class="pr">${esc(it.r)}</span></div>
+    </div>`).join('');
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  renderPlaces();
+  renderFood('list-tradicional', FOOD_TRADICIONAL);
+  renderFood('list-carne', FOOD_CARNE);
+  renderFood('list-petiscos', FOOD_PETISCOS);
+  renderFood('list-doces', FOOD_DOCES);
+  renderFood('list-barato', FOOD_BARATO);
+  renderFood('list-qualidade-preco', FOOD_QUALIDADE_PRECO);
+  renderFood('list-recomendados', FOOD_RECOMENDADOS);
+
+  document.querySelectorAll('#tabbar > .tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('#tabbar > .tab').forEach(t => t.classList.toggle('active', t===tab));
+      document.querySelectorAll('.panel').forEach(p => p.classList.toggle('active', p.id===tab.dataset.panel));
+      window.scrollTo({top:0, behavior:'smooth'});
+    });
+  });
+});
+</script>
+
+</body>
+</html>
